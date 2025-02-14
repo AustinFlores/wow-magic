@@ -20,15 +20,25 @@
             <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
             <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
             <script>
+                let phrases = ["ay ambot", "sigi na ngani", "ihh", "sira po ang No button", "yes na ngani"];
+                let phraseIndex = 0;
+
                 function nextPage() {
                     window.location.href = "yes.html";
                 }
 
                 function moveButton() {
-                    var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth) - 85;
-                    var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight) - 48;
-                    document.getElementById('noButton').style.left = `${x}px`;
-                    document.getElementById('noButton').style.top = `${y}px`;
+                    var noButton = document.getElementById('noButton');
+
+                    // Change text
+                    noButton.innerText = phrases[phraseIndex];
+                    phraseIndex = (phraseIndex + 1) % phrases.length; // Loop through the phrases
+
+                    // Random position
+                    var x = Math.random() * (window.innerWidth - noButton.offsetWidth) - 85;
+                    var y = Math.random() * (window.innerHeight - noButton.offsetHeight) - 48;
+                    noButton.style.left = `${x}px`;
+                    noButton.style.top = `${y}px`;
                 }
             </script>
         </div>
